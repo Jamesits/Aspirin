@@ -1,6 +1,7 @@
 //System objects
 var canvas, ctx;
 //Game settings
+var allowHideKeyboard = 1;
 var screen_width = 480;//default:384
 var screen_height = 300;//default:216
 var statusbarheight = 22;
@@ -42,7 +43,7 @@ var handle;//timer handler
 var highscore = 0;
 var globalhighscore = window.localStorage.getItem("highscore");
 if (globalhighscore === undefined){globalhighscore = 0;}
-var gamestatus = 0;//0=before 1=start 2=over
+var gamestatus = 0;//0=before 1=start 2=over 3=paused
 var score = 0;
 
 //vmouse events
@@ -126,6 +127,8 @@ function draw_home() {
     ctx.fillStyle = fg2color;
     ctx.font = fontsize + "px serif";
     ctx.fillText("Aspirin Port by James Swineson", 1, fontsize + 1);
+    ctx.fillText("Hold your phone in landscape mode to start game", 1, fontsize + 20);
+    ctx.fillText("and turn back to pause.", 1, fontsize + 40);
     //ctx.fillText("OPTN to change color scheme", 1, fontsize + 40);
     //ctx.fillText("EXE to start game", 1, fontsize + 60);
 
@@ -192,10 +195,24 @@ function select_color() {
 }
 //Button show/hide animation
 function hidebutton(){
+    if (allowHideKeyboard){
     $( "#keyboard" ).hide();
+    }
 }
 function showbutton(){
+    if (allowHideKeyboard){
     $( "#keyboard" ).show();
+    }
+}
+function hidebutton2(){
+    if (allowHideKeyboard){
+        $( "#keyboard2" ).hide();
+    }
+}
+function showbutton2(){
+    if (allowHideKeyboard){
+        $( "#keyboard2" ).show();
+    }
 }
 //Process Button event
 function optn() {
@@ -207,11 +224,11 @@ function exe() {
     if (gamestatus === 2) {
         gamestatus = 1;
         gameloop();
-        hidebutton();
+        hidebutton2();
     }
     if (gamestatus === 0) {
         gameloop();
-        hidebutton();
+        hidebutton2();
     }
 }
 //Document loaded
@@ -249,13 +266,14 @@ function resetGame() {
 
     score = 0;
     mouse=[0,0];
+    showbutton2();
 }
 
 function refresh() {
     if (exit === 1) {
         clearInterval(handle);
         gamestatus = 2;
-        showbutton();
+        //showbutton();
         resetGame();
         return;
     }
@@ -369,7 +387,7 @@ function gameloop() {
     drawCircle(target.x, target.y, target.size, fg2color);
     handle = self.setInterval("refresh()", interval);
 }//function
-
+/*Obsoleted
 function gesture_old (e) { //Gesture recognization(old one)
     var length;
     var angle;
@@ -397,7 +415,7 @@ function gesture_old (e) { //Gesture recognization(old one)
         }//if (length>=vcaToggleLength)
     }//if (ismousedown===1)
 }//function gesture
-
+*/
 function gesture(e){
     var length;
     var angle;
@@ -429,50 +447,100 @@ function gesture(e){
         }
     }//if (ismousedown===1)    
 }
+/* Not working yet
 function saveGameStatus (){
-    var GS;
-    GS.score=score;
-    GS.color.bgcolor=bgcolor;
-    GS.color.fgcolor=fgcolor;
-    GS.color.fg2color=fg2color;
-    GS.color.linecolor=linecolor;
-    GS.highscore=highscore;
-    GS.lines=lines;
-    GS.player=player;
-    GS.target=target;
-    GS.linespeed=linespeed;
-    GS.linecount=linecount;
-    GS.version=1;
-    window.localStorage.setItem("Gamestatus",GS);
+    function GSObj(){
+        this.score=score;
+        this.color.bgcolor=bgcolor;
+        this.color.fgcolor=fgcolor;
+        this.color.fg2color=fg2color;
+        this.color.linecolor=linecolor;
+        this.highscore=highscore;
+        this.lines=lines;
+        this.player=player;
+        this.target=target;
+        this.linespeed=linespeed;
+        this.linecount=linecount;
+        this.version=1;
+    }
+    var GS = GSObj();
+    window.localStorage.setItem("Gamestatus",JSON.stringify(GS));
+    alert(JSON.stringify(GS));
 }
 function restoreGameStatus (){
-    var GS=window.localStorage.getItem("Gamestatus");
-    if(GS.version=1){
-    score = GS.score;
-    bgcolor = GS.color.bgcolor;
-    fgcolor = GS.color.fgcolor;
-    fg2color = GS.color.fg2color;
-    linecolor = GS.color.linecolor;
-    highscore = GS.highscore;
-    lines = GS.lines;
-    player = GS.player;
-    target = GS.target;
-    linespeed = GS.linespeed;
-    linecount = GS.linecount;
+    alert(window.localStorage.getItem("Gamestatus"));
+    var GSi=JSON.parse(window.localStorage.getItem("Gamestatus"));
+    if(GSi.version=1){
+    score = GSi.score;
+    bgcolor = GSi.color.bgcolor;
+    fgcolor = GSi.color.fgcolor;
+    fg2color = GSi.color.fg2color;
+    linecolor = GSi.color.linecolor;
+    highscore = GSi.highscore;
+    lines = GSi.lines;
+    player = GSi.player;
+    target = GSi.target;
+    linespeed = GSi.linespeed;
+    linecount = GSi.linecount;
+    }
+}
+*/
+function pause(){
+    if (gamestatus===1){
+    gamestatus=3;
+    clearInterval(handle);
+    //saveGameStatus();
+        ctx.fillStyle = fg2color;
+        ctx.font = fontsize + "px serif";
+        ctx.fillText("PAUSED", 100, fontsize - 5);
+    }
+}
+function resume(){
+    if (gamestatus===3){
+    gamestatus=1;
+    //restoreGameStatus();
+    handle = setInterval("refresh()", interval);
+    }
+}
+function orient() {
+    if (window.orientation == 0 || window.orientation == 180) {
+        //$('body').attr('class', 'portrait');
+        //orientation = 'portrait';
+        $('#cv').attr('class', 'canvas_portrait');
+        pause();
+        showbutton();
+        hidebutton2();
+        if(gamestatus===2){draw_home();}
+        return false;
+    }
+    else if (window.orientation == 90 || window.orientation == -90) {
+        //$('body').attr('class', 'landscape');
+        //orientation = 'landscape';
+        $('#cv').attr('class', 'canvas_landscape');
+        resume();
+        exe();
+        hidebutton();
+        if(gamestatus===2){showbutton2();}
+        return false;
     }
 }
 //initialize game
 function init() {
     //navigator.standalone
-    screen_width = window.screen.height;// / window.devicePixelRatio;
-    screen_height = window.screen.width;// / window.devicePixelRatio;
+    if (window.screen.height >= window.screen.width) {
+        screen_width = window.screen.height;// / window.devicePixelRatio;
+        screen_height = window.screen.width;// / window.devicePixelRatio;
+    } else {
+        screen_width = window.screen.width;
+        screen_height = window.screen.height;
+    }
     //screen_width=$(window).width;
     //screen_height=$(window).height;
     $("body").on("touchmove", function(e){e.preventDefault();}); //Disable page scrolling
     $("#optn").on("touchstart",optn);
     $("#exe").on("touchstart",exe);
     $("#about").on("touchstart",function(){
-                   window.location.assign("about.html");
+                   if (gamestatus==3){if (confirm("You're going to lost your progress.Sure?")){window.location.assign("about.html");}} else {window.location.assign("about.html");}
                    })
     $("#cv").attr({width: screen_width, height: screen_height});
     $( "#cv" ).on("vmousedown", function(e) {
@@ -485,6 +553,16 @@ function init() {
                   mouse=[0,0];
                   });
     $( "#cv" ).on("vmousemove", gesture);
+    /*
+     $( "#pause" ).on("touchstart",function(e){
+                     if (gamestatus===3){resume();}else if (gamestatus===1){pause();}
+                     });
+     */
+    orient();
+    $(window).bind( 'orientationchange', function(e){
+                   orient();
+                   });
+    
     load();
 }
 $(init);

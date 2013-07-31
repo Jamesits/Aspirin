@@ -7,27 +7,33 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta content="black" name="apple-mobile-web-app-status-bar-style" />
         <meta name="apple-mobile-web-app-title" content="Aspirin">
-
         <meta charset="UTF-8" />
-        <!--
         <link rel="stylesheet" href="css/Trueblack.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
-         -->
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+        
+        <!--<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />-->
         <link rel="stylesheet" href="css/style.css"/>
+            <!--
         <link rel="stylesheet" media="all and (orientation:portrait)"href="css/index_portrait.css">
         <link rel="stylesheet" media="all and (orientation:landscape)"href="css/index_landscape.css">
+             -->
     </head>
     <body>
         <div id="game" class="page">
             <canvas id="cv" width="384" height="216"></canvas>
-                <div id="keyboard">
+                <div id="keyboard" class="keyboard">
                     <div data-role="controlgroup" data-type="horizontal">
-                        <button id="optn" type="button" data-role="button">Change Color</button>
-                        <button id="exe" type="button" data-role="button">Start</button>
-                        <button id="about" type="button" data-role="button">About</button>
+                        <!--<button id="optn" type="button" data-role="button">Change Color</button>-->
+                        <!--<button id="exe" type="button" data-role="button">Start</button>-->
+                        <button id="about" type="button" data-role="button">Settings</button>
+                        <!--<button id="pause" type="button" data-role="button">Pause</button>-->
                     </div>
                 </div>
+            <div id="keyboard2" class="keyboard">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <button id="exe" type="button" data-role="button">Restart</button>
+                </div>
+            </div>
         </div>
         <script src="js/jquery.js"></script>
         <script src="cordova.js"></script>

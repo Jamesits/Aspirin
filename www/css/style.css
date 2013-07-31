@@ -23,13 +23,16 @@ div {
     }
     
 canvas {
+position: absolute;
     //border: 1px solid gray;
     //width: 95%;
     //margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
+    //margin-left: auto;
+    //margin-right: auto;
+    left: 0px;
+    top: 0px;
+    //width: 100%;
+    //height: 100%;
 }
 button {
     width:20%;
@@ -41,11 +44,12 @@ button {
     text-align: center;
 }
 
-#keyboard {
+.keyboard {
     position: absolute;
     //top: 10px;
     //left: 50px;
     bottom: 5px;
+    right: 5px;
     margin-left: auto;
     margin-right: auto;
     }
@@ -56,3 +60,17 @@ div.page {
     margin-left: auto;
     margin-right: auto;
     }
+    
+.canvas_portrait{
+    -webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+    left: -80px;
+    top: 80px;
+}
+
+.canvas_landscape{
+    -webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+}

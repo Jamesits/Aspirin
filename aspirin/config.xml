@@ -51,7 +51,7 @@
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="TopActivityIndicator" value="gray" />
-
+    <preference name="UIWebViewBounce" value="false" /> <!--Disable page scrolling-->
 
     <feature name="Geolocation">
       <param name="ios-package" value="CDVLocation"/>
