@@ -14,7 +14,7 @@ fgcolor = "blue";
 fg2color = "red";
 linecolor = "lightblue";
 var fontsize = 20;
-var colorscheme = 0;
+var colorscheme = window.localStorage.getItem("Colorscheme") || 0;
 //virtual controller trigger angle settings
 /*defaults:
  var vca1=22.5;
@@ -157,41 +157,46 @@ function draw_home() {
 
 //select color scheme
 function select_color() {
+    colorscheme=window.localStorage.getItem("Colorscheme");
+    if (colorscheme==undefined){colorscheme=0;window.localStorage.setItem("Colorscheme",0);}
+    //alert(colorscheme);
+    /*
     colorscheme = colorscheme + 1;
     if (colorscheme === 5) {
         colorscheme = 0;
     }
-    if (colorscheme === 0) {
+     */
+    if (colorscheme == 0) {
         bgcolor = "black";
         fgcolor = "blue";
         fg2color = "red";
         linecolor = "lightblue";
     }
-    if (colorscheme === 1) {
+    if (colorscheme == 1) {
         bgcolor = "black";
         fgcolor = "hotpink";
         fg2color = "violet";
         linecolor = "magenta";
     }
-    if (colorscheme === 2) {
+    if (colorscheme == 2) {
         bgcolor = "black";
         fgcolor = "limegreen";
         fg2color = "blue";
         linecolor = "lightblue";
     }
-    if (colorscheme === 3) {
+    if (colorscheme == 3) {
         bgcolor = "white";
         fgcolor = "black";
         fg2color = "red";
         linecolor = "blue";
     }
-    if (colorscheme === 4) {
+    if (colorscheme == 4) {
         bgcolor = "purple";
         fgcolor = "hotpink";
         fg2color = "white";
         linecolor = "magenta";
     }
-    draw_home();
+    //draw_home();
 }
 //Button show/hide animation
 function hidebutton(){
@@ -562,7 +567,7 @@ function init() {
     $(window).bind( 'orientationchange', function(e){
                    orient();
                    });
-    
+    select_color();
     load();
 }
 $(init);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>About Aspirin</title>
+        <title>Aspirin</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
         <meta name="format-detection" content="telephone=no" />
         <meta charset="UTF-8" />
@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="css/about.css" />
     </head>
     <body>
-        <div data-role="page">
+        <div data-role="page" data-transition="none">
             <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back to Game</a><h1>Asprin</h1></div>
             <div data-role="content">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider">Settings</li>
-                    <li><a href="#">--None--</a></li>
+                    <li><a href="#color">Color Scheme</a></li>
                     <li data-role="list-divider">About</li>
                     <li><a href="#Game">The Game</a></li>
                     <li><a href="#License">License</a></li>
@@ -23,20 +23,33 @@
                 </ul>
             </div>
         </div>
-        <div data-role="page" id="Game">
+        <div data-role="page" id="color" data-transition="slide">
+            <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back</a><h1>About Asprin</h1></div>
+            <div data-role="content">
+                <h3>Color Scheme</h3><hr>
+                <ul data-role="listview" data-inset="true">
+                    <li><a id="color0" class="color" href="#" data-value="0">Classic</a></li>
+                    <li><a id="color1" class="color" href="#" data-value="1">Pink</a></li>
+                    <li><a id="color2" class="color" href="#" data-value="2">Blue</a></li>
+                    <li><a id="color3" class="color" href="#" data-value="3">Light</a></li>
+                    <li><a id="color4" class="color" href="#" data-value="4">Purple</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="Game" data-transition="slide">
             <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back</a><h1>About Asprin</h1></div>
             <div data-role="content">
                 <h3>The game</h3><hr>
                 <p>This game is inspired by the game aspirin on CASIO fx-CG20, which is a great calculator but was confiscated by my teacher.</p>
             </div>
         </div>
-        <div data-role="page" id="License">
+        <div data-role="page" id="License" data-transition="slide">
             <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back</a><h1>License</h1></div>
             <div data-role="content">
                 <p>Licensed under GPLV3.</p>
             </div>
         </div>
-        <div data-role="page" id="Author">
+        <div data-role="page" id="Author" data-transition="slide">
             <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back</a><h1>Author</h1></div>
             <div data-role="content">
                 <h3>James Swineson</h3>
@@ -45,7 +58,7 @@
                 <p>Contant me:<br><a href="mailto:jamesswineson@gmail.com">jamesswineson@gmail.com</a><p>
             </div>
         </div>
-        <div data-role="page" id="Thanks">
+        <div data-role="page" id="Thanks" data-transition="slide">
             <div data-role="header" data-position="fixed"><a href="index.html" data-icon="arrow-l" data-rel="back">Back</a><h1>Thanks to</h1></div>
             <div data-role="content">
                 <h3>Thanks to the following people:</h3>
@@ -65,7 +78,7 @@
         </div>
         <script src="js/jquery.js"></script>
         <script src="cordova.js"></script>
-        <script src="js/jquery.mobile-1.3.1.min.js"></script>
         <script src="js/about.js"></script>
+        <script src="js/jquery.mobile-1.3.1.min.js"></script>
     </body>
 </html>
