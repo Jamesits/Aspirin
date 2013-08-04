@@ -14,6 +14,7 @@ fgcolor = "blue";
 fg2color = "red";
 linecolor = "lightblue";
 var fontsize = 20;
+var font = "sans-serif";
 var colorscheme = window.localStorage.getItem("Colorscheme") || 0;
 //virtual controller trigger angle settings
 /*defaults:
@@ -113,7 +114,7 @@ function drawStatusBar(score, textcolor, linecolor) {
     ctx.lineTo(screen_width, statusbarheight);
     ctx.stroke();
     ctx.fillStyle = textcolor;
-    ctx.font = fontsize + "px serif";
+    ctx.font = fontsize + "px "+font;
     ctx.fillText("Score: " + score, 2, fontsize - 5);
 }
 
@@ -125,7 +126,7 @@ function draw_home() {
 
 //Text
     ctx.fillStyle = fg2color;
-    ctx.font = fontsize + "px serif";
+    ctx.font = fontsize + "px "+font;
     ctx.fillText("Aspirin Port by James Swineson", 1, fontsize + 1);
     ctx.fillText("Hold your phone in landscape mode to start game", 1, fontsize + 20);
     ctx.fillText("and turn back to pause.", 1, fontsize + 40);
@@ -261,7 +262,7 @@ function resetGame() {
 
 //Text
     ctx.fillStyle = fg2color;
-    ctx.font = fontsize + "px serif";
+    ctx.font = fontsize + "px "+font;
     ctx.fillText("GAME OVER", 1, fontsize);
     ctx.fillText("SCORE:" + score, 1, fontsize + 20);
     ctx.fillText("SESSION HIGH SCORE:" + highscore, 1, fontsize + 40);
@@ -496,7 +497,7 @@ function pause(){
     clearInterval(handle);
     //saveGameStatus();
         ctx.fillStyle = fg2color;
-        ctx.font = fontsize + "px serif";
+        ctx.font = fontsize + "px "+font;
         ctx.fillText("PAUSED", 100, fontsize - 5);
     }
 }
