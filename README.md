@@ -22,15 +22,23 @@ Also, I make the collision calculations not very exact on purpose. Take it as an
 How to Play
 =======
 Remember to unlock screen rotating on your iDevice.
+
 Move the small circle (player) towards the big circle (target) without hitting the obstacles (sticks). 
 
+
 Start: put your iDevice in landscape mode.
+
 Pause: put your iDevice in portrait mode.
+
 Move: touch any point on the screen and drag in one of the 8 directions.
 
+
 About speed: on each direction (x and y) you can gain a certain speed. 
+
 Score: every time you reach a target, you get 100 score.
+
 Speed increase: on reaching every 1000 score, it become faster. Until 6000.
+
 
 Why I'm Working on This
 ======
@@ -39,10 +47,15 @@ My beloved second-hand CASIO fx-CG20 was confiscated by my teacher. It (and this
 About
 ======
 Author: James Swineson
+
 Contact me: mail to jamesswineson#gmail.com (replace # with @)
+
 I'm a poor high school student, developing this iOS game without a Mac. Donations welcomed.
 
+
 Origin author:flyingfisch (Blog:casio.clrhome.org)
+
 The origin game is based on lua, running on CASIO fx-CG20.
+
 
 Licensed under GPLv3.
