@@ -50,7 +50,7 @@ Contact me: mail to jamesswineson#gmail.com (replace # with @)
 
 I'm a poor high school student, developing this iOS game without a Mac. 
 
-<strong>Donations welcomed.</strong>
+<strong>Donations needed. Any old devices are welcomed.</strong>
 
 Origin author:flyingfisch (Blog: casio.clrhome.org)
 
