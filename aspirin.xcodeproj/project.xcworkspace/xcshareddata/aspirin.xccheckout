@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>14A6BA9B-A6C5-4FAD-A6A5-5780BB7C895C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>aspirin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FE74CCF1-FCCE-47E7-A242-907C9D79AD2A</key>
+		<string>https://github.com/zhj86868649/Aspirin</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>aspirin.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FE74CCF1-FCCE-47E7-A242-907C9D79AD2A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zhj86868649/Aspirin</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FE74CCF1-FCCE-47E7-A242-907C9D79AD2A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE74CCF1-FCCE-47E7-A242-907C9D79AD2A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Aspirin</string>
+		</dict>
+	</array>
+</dict>
+</plist>
